@@ -48,6 +48,22 @@ Planned features:
 
 ---
 
+## Week 1 — Day 2 Progress
+
+### Completed
+- Exploratory Data Analysis
+- Correlation heatmap
+- Feature distributions
+- Advanced rolling window features
+- Statistical feature engineering
+- Data cleaning improvements
+
+### Added Features
+- Rolling mean
+- Rolling std
+- Rolling min/max
+- Variance-based analysis
+
 # Week 1 Objectives
 
 - IoT telemetry ingestion

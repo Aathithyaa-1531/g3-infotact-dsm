@@ -83,6 +83,20 @@ Planned features:
 
 Successfully trained first predictive maintenance model and evaluated performance.
 
+## Week 1 — Day 4 Progress
+
+### Completed
+
+- Studied class imbalance
+- Applied SMOTE oversampling
+- Trained improved Random Forest model
+- Compared model performance
+- Evaluated confusion matrix
+
+### Outcome
+
+Improved handling of rare machine failure cases through data balancing techniques.
+
 # Week 1 Objectives
 
 - IoT telemetry ingestion

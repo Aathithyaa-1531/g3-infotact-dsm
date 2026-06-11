@@ -64,6 +64,25 @@ Planned features:
 - Rolling min/max
 - Variance-based analysis
 
+## Week 1 — Day 3 Progress
+
+### Completed
+
+- Built baseline Random Forest model
+- Performed train-test split
+- Generated classification report
+- Created confusion matrix
+- Analyzed feature importance
+
+### New Features
+
+- Temperature difference
+- Power proxy feature
+
+### Outcome
+
+Successfully trained first predictive maintenance model and evaluated performance.
+
 # Week 1 Objectives
 
 - IoT telemetry ingestion

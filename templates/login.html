@@ -923,46 +923,46 @@ function setInputState(id, state) {
 function isEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
 
 /* Login form */
-document.getElementById('login-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const email = document.getElementById('login-email').value.trim();
-  const pass  = document.getElementById('login-pass').value;
-  let valid = true;
+// document.getElementById('login-form').addEventListener('submit', function(e) {
+//   e.preventDefault();
+//   const email = document.getElementById('login-email').value.trim();
+//   const pass  = document.getElementById('login-pass').value;
+//   let valid = true;
 
-  if (!isEmail(email)) {
-    setInputState('login-email', 'error');
-    showErr('login-email-err', true);
-    valid = false;
-  } else {
-    setInputState('login-email', 'success');
-    showErr('login-email-err', false);
-  }
+//   if (!isEmail(email)) {
+//     setInputState('login-email', 'error');
+//     showErr('login-email-err', true);
+//     valid = false;
+//   } else {
+//     setInputState('login-email', 'success');
+//     showErr('login-email-err', false);
+//   }
 
-  if (!pass) {
-    setInputState('login-pass', 'error');
-    showErr('login-pass-err', true);
-    valid = false;
-  } else {
-    setInputState('login-pass', 'success');
-    showErr('login-pass-err', false);
-  }
+//   if (!pass) {
+//     setInputState('login-pass', 'error');
+//     showErr('login-pass-err', true);
+//     valid = false;
+//   } else {
+//     setInputState('login-pass', 'success');
+//     showErr('login-pass-err', false);
+//   }
 
-  if (!valid) return;
+//   if (!valid) return;
 
-  /* Loading state */
-  const btn = document.getElementById('login-btn');
-  btn.classList.add('loading');
-  btn.disabled = true;
+//   /* Loading state */
+//   const btn = document.getElementById('login-btn');
+//   btn.classList.add('loading');
+//   btn.disabled = true;
 
-  /* Simulate Flask route call (replace with actual form.submit() in production) */
-  setTimeout(() => {
-    btn.classList.remove('loading');
-    btn.disabled = false;
-    showToast('Login successful! Redirecting to Home...', 'success');
-    /* In Flask, just remove the setTimeout and call: this.submit() */
-    setTimeout(() => { window.location.href = '/'; }, 1500);
-  }, 1800);
-});
+//   /* Simulate Flask route call (replace with actual form.submit() in production) */
+//   setTimeout(() => {
+//     btn.classList.remove('loading');
+//     btn.disabled = false;
+//     showToast('Login successful! Redirecting to Home...', 'success');
+//     /* In Flask, just remove the setTimeout and call: this.submit() */
+//     setTimeout(() => { window.location.href = '/'; }, 1500);
+//   }, 1800);
+// });
 
 /* Register form */
 document.getElementById('register-form').addEventListener('submit', function(e) {

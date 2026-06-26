@@ -136,23 +136,38 @@ def get_stats():
         'critical': critical
     }
 def register_user(fullname, email, phone, address, password):
+
     conn = get_db()
     cursor = conn.cursor()
 
     try:
+
         cursor.execute("""
             INSERT INTO users
             (fullname,email,phone,address,password)
             VALUES (?,?,?,?,?)
-        """, (fullname, email, phone, address, password))
+        """, (
+            fullname,
+            email,
+            phone,
+            address,
+            password
+        ))
 
         conn.commit()
+
+        print("USER INSERTED SUCCESSFULLY")
+
         return True
 
-    except:
+    except Exception as e:
+
+        print("DATABASE ERROR :", e)
+
         return False
 
     finally:
+
         conn.close()
 
 
@@ -168,6 +183,7 @@ def get_user_by_email(email):
     user = cursor.fetchone()
 
     conn.close()
+    return user
 
 def login_user(email, password):
     """

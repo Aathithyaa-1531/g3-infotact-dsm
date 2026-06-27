@@ -695,7 +695,7 @@
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
                 <circle cx="12" cy="7" r="4"/>
               </svg>
-              <input type="text" id="reg-name" name="name" placeholder="Rohit Sharma" autocomplete="name" />
+              <input type="text" id="reg-name" name="fullname" placeholder="Rohit Sharma" autocomplete="name" />
             </div>
             <div class="field-error" id="reg-name-err">Name must be at least 2 characters.</div>
           </div>
@@ -710,6 +710,40 @@
               <input type="email" id="reg-email" name="email" placeholder="you@company.com" autocomplete="email" />
             </div>
             <div class="field-error" id="reg-email-err">Please enter a valid email address.</div>
+          </div>
+
+          <div class="field">
+            <label for="reg-phone">Phone Number</label>
+              <div class="input-wrap">
+                <input
+                   type="tel"
+                    id="reg-phone"
+                    name="phone"
+                    placeholder="9876543210"
+                    maxlength="10"
+                    autocomplete="tel">
+                </div>
+
+                <div class="field-error" id="reg-phone-err">
+                  Enter a valid 10 digit phone number.
+            </div>
+          </div>
+            
+          <div class="field">
+            <label for="reg-address">Address</label>
+
+            <div class="input-wrap">
+              <input
+              type="text"
+              id="reg-address"
+              name="address"
+              placeholder="Jaipur, Rajasthan"
+              autocomplete="street-address">
+            </div>
+
+            <div class="field-error" id="reg-address-err">
+              Please enter your address.
+            </div>
           </div>
 
           <div class="field">
@@ -923,50 +957,48 @@ function setInputState(id, state) {
 function isEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
 
 /* Login form */
-// document.getElementById('login-form').addEventListener('submit', function(e) {
-//   e.preventDefault();
-//   const email = document.getElementById('login-email').value.trim();
-//   const pass  = document.getElementById('login-pass').value;
-//   let valid = true;
+document.getElementById('login-form').addEventListener('submit', function(e) {
+  const email = document.getElementById('login-email').value.trim();
+  const pass  = document.getElementById('login-pass').value;
+  let valid = true;
 
-//   if (!isEmail(email)) {
-//     setInputState('login-email', 'error');
-//     showErr('login-email-err', true);
-//     valid = false;
-//   } else {
-//     setInputState('login-email', 'success');
-//     showErr('login-email-err', false);
-//   }
+  if (!isEmail(email)) {
+    setInputState('login-email', 'error');
+    showErr('login-email-err', true);
+    valid = false;
+  } else {
+    setInputState('login-email', 'success');
+    showErr('login-email-err', false);
+  }
 
-//   if (!pass) {
-//     setInputState('login-pass', 'error');
-//     showErr('login-pass-err', true);
-//     valid = false;
-//   } else {
-//     setInputState('login-pass', 'success');
-//     showErr('login-pass-err', false);
-//   }
+  if (!pass) {
+    setInputState('login-pass', 'error');
+    showErr('login-pass-err', true);
+    valid = false;
+  } else {
+    setInputState('login-pass', 'success');
+    showErr('login-pass-err', false);
+  }
 
-//   if (!valid) return;
+  if(!valid){
 
-//   /* Loading state */
-//   const btn = document.getElementById('login-btn');
-//   btn.classList.add('loading');
-//   btn.disabled = true;
+  e.preventDefault();
 
-//   /* Simulate Flask route call (replace with actual form.submit() in production) */
-//   setTimeout(() => {
-//     btn.classList.remove('loading');
-//     btn.disabled = false;
-//     showToast('Login successful! Redirecting to Home...', 'success');
-//     /* In Flask, just remove the setTimeout and call: this.submit() */
-//     setTimeout(() => { window.location.href = '/'; }, 1500);
-//   }, 1800);
-// });
+  return;
+
+  }
+
+  const btn = document.getElementById("login-btn");
+
+btn.classList.add("loading");
+
+btn.disabled = true;
+
+});
 
 /* Register form */
 document.getElementById('register-form').addEventListener('submit', function(e) {
-  e.preventDefault();
+
   const name    = document.getElementById('reg-name').value.trim();
   const email   = document.getElementById('reg-email').value.trim();
   const pass    = document.getElementById('reg-pass').value;
@@ -1004,18 +1036,18 @@ document.getElementById('register-form').addEventListener('submit', function(e) 
     showErr('reg-terms-err', false);
   }
 
-  if (!valid) return;
+  if (!valid){
+  e.preventDefault();
 
-  const btn = document.getElementById('register-btn');
-  btn.classList.add('loading');
-  btn.disabled = true;
+  return;
+  }
 
-  setTimeout(() => {
-    btn.classList.remove('loading');
-    btn.disabled = false;
-    showToast('Account created! Signing you in...', 'success');
-    setTimeout(() => { window.location.href = '/'; }, 1500);
-  }, 2000);
+const btn=document.getElementById("register-btn");
+
+btn.classList.add("loading");
+
+btn.disabled=true;
+
 });
 
 /* ─── TOAST ─── */

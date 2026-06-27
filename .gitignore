@@ -1,26 +1,23 @@
-# datasets
-data/
-*.csv
-
-# model files
-models/
-*.h5
-*.pt
-*.pth
-*.pkl
-*.joblib
-
-# notebook cache
-.ipynb_checkpoints/
-
-# python cache
+# Python cache
 __pycache__/
 
-# env
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb
+
+# Environment variables
 .env
 
-# vscode
+# VS Code
 .vscode/
 
-# mac
+# macOS
 .DS_Store
+
+# Windows
+Thumbs.db

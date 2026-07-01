@@ -177,16 +177,11 @@ Verified impact of contextual variables on predictive maintenance performance.
 
 # Author
 
-Rohan Thakar
+AATHITHYAA E
 =======
 ---
 title: Engine Predictive Maintenance
 emoji: 📈
 colorFrom: green
 colorTo: green
-sdk: docker
-pinned: false
 ---
-
-Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
->>>>>>> a3dc954 (Fresh deployment)

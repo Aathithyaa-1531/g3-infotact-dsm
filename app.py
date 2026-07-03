@@ -125,14 +125,26 @@ def login_page():
     if "user_id" in session:
         return redirect("/")
  
-    # Only change from original:
-    # Pass flash messages to login.html so the toast can show them.
-    # get_flashed_messages() clears the queue automatically after reading.
     messages = get_flashed_messages(with_categories=True)
  
-    return render_template("login.html", messages=messages)
- 
- 
+    return render_template("login.html", messages=messages, active_tab="login")
+
+
+# ==========================
+# Signup Page
+# ==========================
+
+@app.route("/signup")
+def signup_page():
+
+    if "user_id" in session:
+        return redirect("/")
+
+    messages = get_flashed_messages(with_categories=True)
+
+    return render_template("login.html", messages=messages, active_tab="register")
+
+
 # ==========================
 # Register
 # ==========================
@@ -145,10 +157,10 @@ def register():
 
     fullname = request.form.get("fullname")
     email = request.form.get("email")
-    phone = request.form.get("phone")
-    address = request.form.get("address")
+    phone = request.form.get("phone", "")
+    address = request.form.get("address", "")
     password = request.form.get("password")
-    confirm = request.form.get("confirm_password")
+    confirm = request.form.get("confirm_password", password)
 
     print("Full Name :", fullname)
     print("Email     :", email)
@@ -157,13 +169,13 @@ def register():
 
     if password != confirm:
         flash("Passwords do not match")
-        return redirect("/login")
+        return redirect("/signup")
 
     existing = get_user_by_email(email)
 
     if existing:
         flash("Email already registered")
-        return redirect("/login")
+        return redirect("/signup")
 
     success = register_user(
         fullname,
@@ -177,7 +189,7 @@ def register():
 
     if not success:
         flash("Registration failed")
-        return redirect("/login")
+        return redirect("/signup")
 
     flash("Registration successful")
     return redirect("/login")
@@ -250,16 +262,14 @@ def home():
 
     print("SESSION:", dict(session))
 
-    # Login mandatory
-    if "user_id" not in session:
-        return redirect("/login")
-
+    logged_in = "user_id" in session
     stats = get_stats()
 
     return render_template(
         "index.html",
         stats=stats,
-        username=session["user_name"]
+        username=session.get("user_name"),
+        logged_in=logged_in
     )
  
  
@@ -270,6 +280,10 @@ def home():
 @app.route("/predict", methods=["POST"])
 def predict():
  
+    if "user_id" not in session:
+        flash("Please sign in to check the engine's health.")
+        return redirect(url_for("login_page"))
+
     try:
  
         result = predict_engine(request.form)

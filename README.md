@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Contextual Predictive Maintenance (IoT Edge AI)
 
 ## Internship Project
@@ -173,15 +172,4 @@ Verified impact of contextual variables on predictive maintenance performance.
 - Individual branch development
 - Weekly progress tracking
 
----
-
-# Author
-
-AATHITHYAA E
-=======
----
-title: Engine Predictive Maintenance
-emoji: 📈
-colorFrom: green
-colorTo: green
 ---

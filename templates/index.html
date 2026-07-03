@@ -30,9 +30,16 @@
           <a href="/project" class="nav-link-custom">Project</a>
           <a href="/contact" class="nav-link-custom">Contact</a>
 
-    <a href="/logout" class="nav-link-custom text-danger">
-        <i class="bi bi-box-arrow-right"></i> Logout
-    </a>
+          {% if logged_in %}
+            <span class="nav-link-custom text-secondary d-none d-lg-inline-block" style="pointer-events: none;">Hi, {{ username }}</span>
+            <a href="/logout" class="nav-link-custom text-danger">
+                <i class="bi bi-box-arrow-right"></i> Logout
+            </a>
+          {% else %}
+            <a href="/login" class="nav-link-custom" style="color: #f59e0b !important;">
+                <i class="bi bi-box-arrow-in-right"></i> Sign In
+            </a>
+          {% endif %}
         </div>
         </div>
       </div>
@@ -203,6 +210,7 @@
       </div>
       <div class="row align-items-center g-5">
 
+  {% if logged_in %}
   <!-- LEFT SIDE FORM -->
 
   <div class="col-lg-7">
@@ -315,6 +323,28 @@
 
 </div>
   </div>
+  {% else %}
+  <!-- LOCKED STATE -->
+  <div class="col-lg-7">
+    <div class="prediction-form-container fade-in-scroll" style="border: 1px dashed rgba(245, 158, 11, 0.4); border-radius: 20px; padding: 4.5rem 2rem; text-align: center; background: rgba(15, 23, 42, 0.2); backdrop-filter: blur(10px); box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+      <div class="mb-4 d-inline-flex align-items-center justify-content-center" style="width: 70px; height: 70px; border-radius: 50%; border: 2px solid #f59e0b; background: rgba(245, 158, 11, 0.1); box-shadow: 0 0 15px rgba(245, 158, 11, 0.2);">
+        <i class="bi bi-lock-fill" style="font-size: 2.2rem; color: #f59e0b;"></i>
+      </div>
+      <h3 class="fw-bold mb-3" style="color: #f59e0b; letter-spacing: -0.5px; font-size: 1.75rem;">Prediction Feature Locked</h3>
+      <p class="text-secondary mb-4" style="max-width: 440px; margin: 0 auto; font-size: 0.95rem; line-height: 1.6;">
+        Please sign in to check the engine's health. Access full AI analytics and prediction history reporting.
+      </p>
+      <div class="d-flex justify-content-center gap-3 flex-wrap mt-2">
+        <a href="/login" class="btn btn-lg d-flex align-items-center gap-2 fw-bold" style="background: #f59e0b; border: none; color: #0f172a; padding: 0.75rem 2rem; border-radius: 10px; transition: transform 0.2s, box-shadow 0.2s; font-size: 1rem;">
+          <i class="bi bi-box-arrow-in-right"></i> Sign In
+        </a>
+        <a href="/signup" class="btn btn-lg d-flex align-items-center gap-2 fw-bold" style="background: transparent; border: 2px solid #f59e0b; color: #f59e0b; padding: 0.75rem 2rem; border-radius: 10px; transition: transform 0.2s; font-size: 1rem;">
+          <i class="bi bi-person-plus"></i> Sign Up
+        </a>
+      </div>
+    </div>
+  </div>
+  {% endif %}
   <!-- RIGHT SIDE IMAGE -->
 
   <div class="col-lg-5 text-center fade-up delay-2">
